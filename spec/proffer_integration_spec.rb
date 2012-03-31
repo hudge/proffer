@@ -4,17 +4,21 @@ class ApplicationController < ActionController::Base
   include Proffer
 end
 
-describe ApplicationController, :type => :controller do
-  render_views
+class ProfferTestController < ApplicationController
+  self.view_paths = [File.expand_path('../fixtures', __FILE__)]
 
-  controller do
-    self.view_paths = [File.expand_path('../fixtures', __FILE__)]
-
-    def index
-      @foo = "Not passed through"
-      proffer :my_nice_variable => "Woooo"
-    end
+  def index
+    @foo = "Not passed through"
+    proffer :my_nice_variable => "Woooo"
   end
+end
+
+TestApplication.routes.draw do
+  match "/foo" => "proffer_test#index"
+end
+
+describe ProfferTestController, :type => :controller do
+  render_views
 
   describe "#index" do
     describe "as html" do
