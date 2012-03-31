@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
     "spec/spec_helper_rails.rb",
     "spec/proffer_spec.rb",
     "spec/proffer_integration_spec.rb",
-    "spec/fixtures/anonymous/index.html.erb",
-    "spec/fixtures/anonymous/index.xml.builder"
+    "spec/fixtures/proffer_test/index.html.erb",
+    "spec/fixtures/proffer_test/index.xml.builder"
   ]
   s.add_development_dependency("rspec-rails")
   s.add_development_dependency("rails")
