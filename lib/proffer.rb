@@ -34,7 +34,7 @@ module Proffer
 
   # Internal: Override Action Controller's render method to convert proffered
   # variables to locals.
-  def render(*args)
+  def render(*args, &blk)
     if @_proffered_variables
       options = args.extract_options!
       options[:locals] ||= {}
@@ -42,7 +42,7 @@ module Proffer
       args << options
     end
 
-    super
+    super(*args, &blk)
   end
 
   # Internal: Override Action Controller's view_assigns to no longer copy
