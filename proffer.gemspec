@@ -7,5 +7,6 @@ Gem::Specification.new do |s|
   s.files = ["lib/proffer.rb", "Rakefile", "README.md", "LICENSE.txt"]
   s.test_files = ["spec/spec_helper.rb", "spec/proffer_spec.rb"]
   s.add_development_dependency("minitest")
+  s.add_development_dependency("rake")
 end
 
