@@ -1,5 +1,4 @@
 require 'proffer'
-require 'minitest/autorun'
 
 # To avoid requiring Active Support during testing.
 class Array
