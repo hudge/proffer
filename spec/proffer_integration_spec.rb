@@ -1,6 +1,7 @@
 require 'spec_helper_rails'
 
 class ApplicationController < ActionController::Base
+  include Proffer
 end
 
 describe ApplicationController, :type => :controller do
@@ -8,8 +9,6 @@ describe ApplicationController, :type => :controller do
 
   controller do
     self.view_paths = [File.expand_path('../fixtures', __FILE__)]
-
-    include Proffer
 
     def index
       @foo = "Not passed through"
