@@ -3,9 +3,10 @@ require 'proffer'
 require 'action_controller/railtie'
 require 'rails/test_unit/railtie'
 
-Class.new(Rails::Application) do
+class TestApplication < Rails::Application
   config.active_support.deprecation = :stderr
-end.initialize!
+end
+TestApplication.initialize!
 
 require 'rspec/rails'
 
