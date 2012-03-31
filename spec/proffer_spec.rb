@@ -44,17 +44,17 @@ describe Proffer do
 
     it "doesn't override explicitly provided locals" do
       controller.proffering_with_locals(:baz => "quux")
-      controller.args_for_render.must_equal([:proffering, :locals => { :baz => "quux", :foo => "bar" }])
+      controller.args_for_render.must_equal([:proffering, { :locals => { :baz => "quux", :foo => "bar" } }])
     end
 
     it "prefers the explicit locals over the proffered variables if they have the same name" do
       controller.proffering_with_locals(:foo => "new value")
-      controller.args_for_render.must_equal([:proffering, :locals => { :foo => "new value" }])
+      controller.args_for_render.must_equal([:proffering, { :locals => { :foo => "new value" } }])
     end
 
     it "allows multiple calls to proffer" do
       controller.multiple_proffer
-      controller.args_for_render.must_equal([:multiple_proffer, :locals => { :foo => "bar", :baz => "quux" }])
+      controller.args_for_render.must_equal([:multiple_proffer, { :locals => { :foo => "bar", :baz => "quux" } }])
     end
   end
 end
