@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    proffer (0.9.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (2.11.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  proffer!
