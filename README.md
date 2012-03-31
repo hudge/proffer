@@ -1,4 +1,4 @@
-Proffer
+Proffer [![Build Status](https://secure.travis-ci.org/hudge/proffer.png?branch=master)](http://travis-ci.org/hudge/proffer)
 =======
 
 A module to stop Action Controller from copying every instance variable available
