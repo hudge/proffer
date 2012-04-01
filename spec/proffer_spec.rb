@@ -22,6 +22,11 @@ class FakeController < BaseController
     proffer :baz => "quux"
     render :multiple_proffer
   end
+
+  def render_with_no_args
+    proffer :foo => "bar"
+    render
+  end
 end
 
 describe Proffer do
@@ -55,6 +60,11 @@ describe Proffer do
     it "allows multiple calls to proffer" do
       controller.multiple_proffer
       controller.args_for_render.should == [:multiple_proffer, { :locals => { :foo => "bar", :baz => "quux" } }]
+    end
+
+    it "supports implicit rendering with no arguments" do
+      controller.render_with_no_args
+      controller.args_for_render.should == [{ :locals => { :foo => "bar" } }]
     end
   end
 end

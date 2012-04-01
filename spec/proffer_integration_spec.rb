@@ -11,10 +11,16 @@ class ProfferTestController < ApplicationController
     @foo = "Not passed through"
     proffer :my_nice_variable => "Woooo"
   end
+
+  def inline
+    proffer :foo => "bar"
+    render :inline => "My name is <%= foo %>"
+  end
 end
 
 TestApplication.routes.draw do
   match "/foo" => "proffer_test#index"
+  match "/inline" => "proffer_test#inline"
 end
 
 describe ProfferTestController, :type => :controller do
@@ -25,6 +31,11 @@ describe ProfferTestController, :type => :controller do
       it "won't pass instance variables to the view by default" do
         get :index
         response.body.should_not =~ /Not passed through/
+      end
+
+      it "doesn't set assigns" do
+        get :index
+        assigns(:foo).should be_nil
       end
 
       it "will pass proffered variables to the view" do
@@ -45,4 +56,12 @@ describe ProfferTestController, :type => :controller do
       end
     end
   end
+
+  describe "#inline" do
+    it "works with inline rendering" do
+      get :inline
+      response.body.should =~ /My name is bar/
+    end
+  end
 end
+
