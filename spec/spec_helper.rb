@@ -14,6 +14,9 @@ end
 class BaseController
   attr_reader :args_for_render
 
+  def self.hide_action(*)
+  end
+
   def render(*args)
     @args_for_render = args
   end

@@ -26,6 +26,18 @@ end
 describe ProfferTestController, :type => :controller do
   render_views
 
+  describe "#proffer" do
+    it "is not an available action" do
+      controller.available_action?("proffer").should be_false
+    end
+  end
+
+  describe "#proffered" do
+    it "is not an available action" do
+      controller.available_action?("proffered").should be_false
+    end
+  end
+
   describe "#index" do
     describe "as html" do
       it "won't pass instance variables to the view by default" do

@@ -16,6 +16,11 @@
 #   end
 module Proffer
 
+  # Internal: Ensure that methods are not defined as actions.
+  def self.included(base)
+    base.hide_action :proffer, :proffered
+  end
+
   # Public: Make the given values available to the view as local variables.
   #
   # variables - The Hash of values keyed by the local variable name to be used
