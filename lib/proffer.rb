@@ -28,17 +28,32 @@ module Proffer
   #
   # Returns nothing.
   def proffer(variables)
+    proffered.merge!(variables)
+  end
+
+  # Public: All proffered values and their given keys.
+  #
+  # Examples
+  #
+  #   proffered
+  #   # => {}
+  #
+  #   proffer :foo => "bar"
+  #   proffered
+  #   # => { :foo => "bar" }
+  #
+  # Returns a Hash of proffered keys and values.
+  def proffered
     @_proffered_variables ||= {}
-    @_proffered_variables.merge!(variables)
   end
 
   # Internal: Override Action Controller's render method to convert proffered
   # variables to locals.
   def render(*args, &blk)
-    if @_proffered_variables
+    unless proffered.empty?
       options = args.extract_options!
       options[:locals] ||= {}
-      options[:locals] = @_proffered_variables.merge(options[:locals])
+      options[:locals] = proffered.merge(options[:locals])
       args << options
     end
 

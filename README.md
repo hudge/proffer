@@ -51,6 +51,23 @@ Any proffered values will then be available to your views by their key:
 <% end %>
 ```
 
+You can test your use of Proffer by inspecting the `proffered` method on your
+controllers instead of using `assigns` like so:
+
+```ruby
+describe FooController do
+  describe "GET index" do
+    it "only proffers the title" do
+      get :index
+      controller.proffered.should == { :title => "Title" }
+    end
+  end
+end
+```
+
+Note that if you set `@title` in a Proffer-enabled action, `assigns(:title)`
+will be `nil`.
+
 Compatibility
 -------------
 

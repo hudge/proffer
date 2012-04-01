@@ -67,5 +67,16 @@ describe Proffer do
       controller.args_for_render.should == [{ :locals => { :foo => "bar" } }]
     end
   end
+
+  describe "#proffered" do
+    it "is an empty hash by default" do
+      controller.proffered.should == {}
+    end
+
+    it "returns all proffered variables" do
+      controller.multiple_proffer
+      controller.proffered.should == { :foo => "bar", :baz => "quux" }
+    end
+  end
 end
 
