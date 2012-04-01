@@ -2,9 +2,9 @@ Gem::Specification.new do |s|
   s.name = "proffer"
   s.summary = "An Action Controller module to hide instance variables from views by default."
   s.description = "A module to stop Action Controller from copying every instance variable available to an action to the view by default. Instead, Proffer provides a way to explicitly expose values as local variables within views."
-  s.version = "0.9.0"
+  s.version = "0.10.0"
   s.authors = ["James Hunt", "Paul Mucur"]
-  s.homepage = "http://github.com/hudge/proffer"
+  s.homepage = "https://github.com/hudge/proffer"
   s.files = ["lib/proffer.rb", "Rakefile", "README.md", "LICENSE.txt"]
   s.test_files = [
     "spec/spec_helper.rb",
