@@ -21,7 +21,8 @@ module Proffer
     base.hide_action :proffer, :proffered
   end
 
-  # Public: Make the given values available to the view as local variables.
+  # Public: Make the given values available to the view as local variables or 
+  #         (if no arguments given) dumps the view assignment hash
   #
   # variables - The Hash of values keyed by the local variable name to be used
   #             in the view.
@@ -31,8 +32,11 @@ module Proffer
   #   proffer :model => Model.new
   #   # => render ..., :locals => { :model => Model.new }
   #
+  #   proffer
+  #   # => { :model => #<Model#123534234234 > }
+  #
   # Returns nothing.
-  def proffer(variables)
+  def proffer(variables = {})
     proffered.merge!(variables)
   end
 
